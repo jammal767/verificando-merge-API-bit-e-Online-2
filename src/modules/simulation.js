@@ -1033,7 +1033,7 @@ class Simulation {
     const datainicial = moment().tz("America/Sao_Paulo").startOf("day");
     const datainicialteste = new Date(datainicial);
     let auxiliar = Math.floor((this.dataFinal.diff(datainicial, "days") / 365) * 12);
-    let numSemestrest = Math.ceil((auxiliar) / 6);
+    let numSemestrest = Math.ceil((auxiliar - 1) / 6);
     let totalmeses = auxiliar;
     this.totalmeses = auxiliar - 1;
     this.numMeses = auxiliar - 1;
@@ -1147,7 +1147,7 @@ class Simulation {
     }
     let somadescontos = 0;
     const Semestral = this.Mesesteste.filter((f) => f.titulo === "Semestral");
-    let totalparc = Semestral.length - 1;
+    let totalparc = Semestral.length - 2;
     const parcelas = Semestral.length - 1
     const valorsemestral = parseFloat((this.valorTotalSemestral / this.totalsemestre).toFixed(2));
     if (semestral === this.valorTotalSemestral) {
