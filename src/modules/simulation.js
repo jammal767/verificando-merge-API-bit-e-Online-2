@@ -679,18 +679,21 @@ class Simulation {
       // alterações ---------
       this.processandomeses();
       this.calculaMesSemestral();
+      // this.CalculoDescontoChave(chaves);
       if (entrada === this.valorImovel) {
         this.pagamentototal(this.inputEntrada);
         resolve(this.sendResultSimulation());
       } else {
+        if(semestral === this.valorTotalSemestral && mensal === this.valorTotalMensal && chaves === this.valorChaves && entrada === this.valorEntrada){          
+          this.CalculoDescontoChave(chaves);
+        }
         if (semestral > this.valorTotalSemestral) {
           this.semestralmaior(semestral, mensal, chaves, entrada);
         }
         if (mensal > this.valorTotalMensal) {
           this.mensalmaior(mensal, semestral, chaves, entrada);
         }
-        this.CalculoDescontoChave(chaves);
-        if (chaves < this.valorChaves && semestral < this.valorTotalSemestral && entrada > this.valorEntrada) {
+        if (chaves < this.valorChaves && semestral < this.valorTotalSemestral && entrada > this.valorEntrada) {        
           this.CalculoDescontoChave(chaves);
         } 
         if (chaves < this.valorChaves && semestral >= this.valorTotalSemestral && entrada > this.valorEntrada) {
@@ -780,15 +783,15 @@ class Simulation {
   // Retorna Resultados da Simulação
   ///////////////////////////////////
   getResultSimulation() {
-    let valorTotalDescontos = parseFloat(
-      (
-        this.descontoEntrada +
-        this.descontoSemestral +
-        this.descontoMensal
-      ).toFixed(2)
-    );
+    // let valorTotalDescontos = parseFloat(
+    //   (
+    //     this.descontoEntrada +
+    //     this.descontoSemestral +
+    //     this.descontoMensal
+    //   ).toFixed(2)
+    // );    
     let porcentagemDesconto = (
-      (valorTotalDescontos * 100) /
+      (this.valordescontoteste * 100) /
       parseFloat(this.unit.price)
     ).toFixed(2);
 
@@ -808,7 +811,7 @@ class Simulation {
           mensalidades: this.valormensalteste,
         },
         semestrais: {
-          numParcelas: this.numSemestres,
+          numParcelas: this.numSemestres - 1,
           valorParcela: this.valorsemestral,
           valorTotalSemestral: this.valorTotalSemestral,
           mensalidades: this.valorsemestralteste,
@@ -1039,7 +1042,7 @@ class Simulation {
     let mesinic = moment(datainicialteste, "DD/MM/YYYY");
     let mesinicd = moment(datainicialteste, "DD/MM/YYYY");
     this.Mesesteste = [];
-    let semestre = 6;
+    let semestre = 1;
     let totalmes = 0;
     for (let a = 0; a <= totalmeses; a++) {
       mesinicd = moment(datainicialteste, "DD/MM/YYYY");
@@ -1074,7 +1077,6 @@ class Simulation {
     }
     const bkpMesesteste = this.sort(this.Mesesteste, 'totalmeses', 'asc');
     this.Mesesteste = bkpMesesteste;
-    // console.log("this.Mesesteste ===>", this.Mesesteste);
   }
 
   pagamentototal(entrada) {
@@ -1145,7 +1147,7 @@ class Simulation {
     }
     let somadescontos = 0;
     const Semestral = this.Mesesteste.filter((f) => f.titulo === "Semestral");
-    let totalparc = Semestral.length - 1;
+    let totalparc = Semestral.length - 2;
     const parcelas = Semestral.length - 1
     const valorsemestral = parseFloat((this.valorTotalSemestral / this.totalsemestre).toFixed(2));
     if (semestral === this.valorTotalSemestral) {
@@ -1340,8 +1342,8 @@ class Simulation {
       totalAdditionals: this.valueTotalAdditionals(),
       financiamento: {
         entrada: {
-          data: "",
-          valor: 0,
+          data: this.Meses[0].valorEntrada,
+          valor: this.valorimoveldesconto,
         },
         mensais: {
           numParcelas: this.numMeses,
@@ -1367,7 +1369,7 @@ class Simulation {
         mensal: 0,
         semestral: 0,
         totalDesconto: this.totaldescontototal,
-        porcentagemDesconto: `${this.descontoteste}%`,
+        porcentagemDesconto: `${porcentagemDesconto}%`,
       },
     };
     return result;
@@ -1390,10 +1392,12 @@ class Simulation {
       for (let a = 0; a <= (this.totalmeses-1); a++) {
         this.valormensalteste[a].valor = 0;
       }
-      this.valorTotalMensal = mensal;
-      this.valormesalteste = 0;
       this.valordescontoteste = parseFloat((this.valordescontoteste + somadescontos).toFixed(2));
       this.valorChaves = 0;
+    }
+    if(mensal === 0){
+      this.valorTotalMensal = mensal;
+      this.valormesalteste = 0;
     }
     const semestral = totaladiant - this.valorTotalSemestral;
     const valortotalsemestral = this.valorTotalSemestral;
@@ -1414,6 +1418,7 @@ class Simulation {
       this.valorsemestralteste[b].valor = parseFloat(this.valorsemestral.toFixed(2));
     }
     const valorparcela = parseFloat((valorsemestralb - somadescontos).toFixed(2));
+    this.chavedescontoteste = chaves;
     this.valorsemestralteste[totalparc - 1].valor = valorparcela;
     this.valorTotalSemestral = totaladiant
     this.valordescontoteste = parseFloat((this.valordescontoteste + somadescontos).toFixed(2));
