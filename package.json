@@ -1,0 +1,61 @@
+{
+  "name": "api_rkm",
+  "version": "1.2.0",
+  "description": "ApiRestful Desenvolvida para forncer informações ao novo app da RMK",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "./node_modules/nodemon/bin/nodemon.js index.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "linter_init": "./node_modules/.bin/eslint --init",
+    "linter_debug": "./node_modules/.bin/eslint --debug ./src",
+    "linter_fix": "./node_modules/.bin/eslint --fix ./src"
+  },
+  "keywords": [
+    "API",
+    "RestFull",
+    "NodeJS",
+    "MongoDB"
+  ],
+  "author": "Za9",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.18.2",
+    "cloudinary": "^1.13.2",
+    "compression": "^1.7.3",
+    "connect-timeout": "^1.9.0",
+    "consign": "^0.1.2",
+    "cpf_cnpj": "^0.2.0",
+    "dotenv": "^8.2.0",
+    "ejs": "^3.1.5",
+    "email-templates": "^7.0.4",
+    "express": "^4.16.4",
+    "file-stream-rotator": "0.5.7",
+    "helmet": "^3.21.2",
+    "i18n": "^0.8.3",
+    "jsonwebtoken": "^8.5.0",
+    "moment-timezone": "^0.5.32",
+    "mongoose": "5.11.15",
+    "mongoose-encryption": "^2.0.3",
+    "morgan": "^1.9.1",
+    "nodemailer": "^6.4.3",
+    "nodemailer-mailgun-transport": "^2.0.0",
+    "pdf-creator-node": "^1.4.2",
+    "pug": "^2.0.0-rc.4",
+    "request": "^2.88.2",
+    "request-promise": "^4.2.6",
+    "simple-onesignal": "^1.0.4",
+    "type-of-is": "^3.5.1",
+    "xmlhttprequest": "^1.8.0"
+  },
+  "devDependencies": {
+    "eslint": "^6.8.0",
+    "eslint-config-standard": "^14.1.0",
+    "eslint-plugin-import": "^2.20.1",
+    "eslint-plugin-node": "^11.0.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1",
+    "nodemon": "^2.0.2"
+  }
+}

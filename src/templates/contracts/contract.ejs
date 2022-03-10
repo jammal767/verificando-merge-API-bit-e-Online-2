@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="pt-BRr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        * {
+            font-family: Arial, Helvetica, sans-serif;
+            color: #111;
+        }
+
+        body {
+            page-break-before: avoid;
+        }
+
+        h1 {
+            font-size: 11pt;
+        }
+
+        h2 {
+            font-size: 09pt;
+        }
+
+        h3 {
+            font-size: 6pt;
+            text-decoration: underline;
+        }
+
+        p,
+        li {
+            font-size: 6pt;
+        }
+
+        table {
+            width: 100%;
+            margin: 30px 0;
+        }
+
+        tr,
+        th,
+        td {
+            border: 1px solid #ccc;
+            padding: 4px;
+            font-size: 6pt;
+        }
+    </style>
+
+    <% function formatReal(valor) { return parseFloat(valor).toLocaleString('pt-br',{style: 'currency' , currency: 'BRL' }); } %>
+
+</head>
+
+<body>
+
+    <h1>COMPROMISSO PARTICULAR DE COMPRA E VENDA DE IMÓVEL EM CONSTRUÇÃO SOB O REGIME DE EMPREITADA GLOBAL A PREÇO REAJUSTÁVEL</h1>
+
+    <h2>I - Partes</h2>
+
+    <h3>PROMITENTE <b>VENDEDORA</b>:</h3>
+
+    <p><b>RKM 03 SPE EMPREENDIMENTOS IMOBILIÁRIOS LTDA</b>, sociedade empresária, inscrita no CNPJ sob o no <b>21.494.713/0001-29</b>, com sede na <b>Rua Gonçalves Dias, 356 – sala 02, Bairro Funcionários, Belo Horizonte, Minas Gerais</b>, sendo neste ato representada por seus administradores, na forma do seu contrato social, doravante denominada <b>VENDEDORA</b>.</p>
+
+    <h3>PROMITENTE(S) COMPRADOR(ES):</h3>
+    <p>De outro lado, como promitente(s) comprador(es), designado(s), doravante e abreviadamente
+        por “<b>COMPRADOR</b>”, independentemente do gênero e do número de adquirentes:</p>
+
+    <ul>
+        <li><b>Nome</b>:<%=doc.fullname%>
+        </li>
+        <li><b>Nacionalidade</b>: </li>
+        <li><b>Estado civil</b>:<%=doc.married ? 'Casado(a)' : 'Solteiro(a)' %>
+        </li>
+        <li><b>Profissão</b>: </li>
+        <li><b>RG</b>: <%=doc.rg%>
+        </li>
+        <li><b>Órgão expedidor</b>: SSP</li>
+        <li><b>Data de nascimento</b>: <%=doc.birthday%>
+        </li>
+        <li><b>Inscrito (a) no CPF/MF sob nº</b>: <%=doc.cpf%>
+        </li>
+        <li><b>E-mail</b>: <%=doc.email%>
+        </li>
+    </ul>
+
+    <h4>Domicílio e residência do Promissário Comprador</h4>
+    <ul>
+        <li><b>Rua/Avenida</b>: <%=doc.address%>
+        </li>
+        <li><b>Nº</b>: <%=doc.number%>
+        </li>
+        <li><b>Bairro</b>: <%=doc.district%>
+        </li>
+        <li><b>CEP</b>: <%=doc.cep%>
+        </li>
+        <li><b>Cidade/UF</b>: <%=doc.city%>/<%=doc.state%>
+        </li>
+    </ul>
+
+
+    <h2>II – CLÁUSULAS E CONDIÇÕES:</h2>
+    <h3>1. OBJETO</h3>
+
+    <p>Pelo presente instrumento particular, a <b>VENDEDORA</b> promete vender ao <b>COMPRADOR</b> e este a adquirir da <b>VENDEDORA</b>, a fração ideal do terreno objeto das Matrículas nos 60099, 60100 e 79411 do 3o Ofício - Registro Imóveis de Belo Horizonte/MG, situado na Av Carandaí, número 507, Bairro Funcionários, na Cidade de Belo Horizonte, Estado de Minas Gerais, correspondente à(s) futura(s) unidade(s) autônoma(s) citada abaixo, do <%=simulation.results.unit.enterprise.name%>, com metragem da área privativa aproximada conforme citada abaixo, calculadas de acordo com a NB 12.721, com direito de uso da(s) vaga(s) de garagem citadas abaixo, a ser construído sob o regime de empreitada global a preço reajustável, conforme Projeto Arquitetônico aprovado pela Prefeitura de Belo Horizonte, no processo de número 010120241703 e protocolo do Registro de Incorporação 490.510, 490.511, 490.512. A área privativa e frações ideais da(s) unidade(s) autônoma(s) objeto deste contrato são as seguintes:</p>
+    <ul>
+        <li><b>Empreendimento:</b>
+            <%=simulation.results.unit.enterprise.name%>
+        </li>
+        <li><b>Apartamento nº:</b>
+            <%=unit.number%>
+        </li>
+        <li><b>Torre nº:</b>
+            <%=unit.tower%>
+        </li>
+
+        <li><b>Nº. Quartos</b>
+            <%=unit.rooms%>
+        </li>
+        <li><b>Nº. Suítes</b>
+            <%=unit.suites%>
+        </li>
+        <li><b>Nº. Semissuítes</b>
+            <%=unit.semissuites%>
+        </li>
+        <li><b>Nº. Vagas</b>
+            <%=unit.garage%>
+        </li>
+        <li><b>Nº. Banheiros</b>
+            <%=unit.bathrooms%>
+        </li>
+        <li><b>Área construída:</b>
+            <%=unit.meters%>m2
+        </li>
+    </ul>
+
+    <p><b>1.2.</b> Fazem parte integrante deste instrumento a planta baixa do apartamento tipo, a planta da garagem da unidade e o memorial descritivo do <b>
+            <%=simulation.results.unit.enterprise.name%>
+        </b> e da(s) unidade(s) autônoma(s) com suas respectivas vagas de garagem, rubricados e assinados pelas partes.</p>
+    <p><b>1.3.</b> Sem que caiba ao <b>COMPRADOR</b> o direito de pleitear qualquer compensação, poderá a <b>VENDEDORA</b> alterar o projeto de execução e o memorial descritivo do <b>
+            <%=simulation.results.unit.enterprise.name%>
+        </b>, em virtude de determinação ou exigência dos poderes públicos, do Corpo de Bombeiros, de empresas concessionárias de serviços públicos, ou ainda necessidades técnicas supervenientes.</p>
+    <p><b>1.4.</b> Além do acima disposto, fica estipulado que as diferenças nas áreas comuns ou de utilização privativa, das áreas totais e de fração ideal de terreno de até cinco por cento (5%) das constantes do projeto aprovado comparativamente às dos quadros da NBR 12.721, e destes comparativamente às do projeto de execução, não darão à <b>VENDEDORA</b>, nem ao <b>COMPRADOR</b> quaisquer direitos a ressarcimentos pelas diferenças que, até aquele limite, resultarem da execução da obra.</p>
+
+    <h3>2. PREÇO, FORMA DE PAGAMENTO E REAJUSTAMENTO</h3>
+    <p><b>2.1.</b> Pela fração ideal, áreas e partes comuns do <b>
+            <%=simulation.results.unit.enterprise.name%>
+        </b>, a(s) unidade(s) autônoma(s) objeto do presente compromisso de compra e venda ora ajustado, o <b>COMPRADOR</b> pagará à <b>VENDEDORA</b> o preço total de <b>R$ x.xxx.xxx,xx (xxxxxxxxxx)</b>, sendo <b>R$ xxx.xxx,xx</b> para a fração ideal do terreno e <b>R$ xxx.xxx,xx</b> para as acessões e benfeitorias, na forma adiante apresentada no quadro e especificada abaixo:</p>
+
+    <ul>
+        <li><b>Entrada:</b>
+            <%=formatReal(simulation.results.financiamento.entrada.valor)%>
+        </li>
+        <li><b>Mensais:</b>
+            <%=formatReal(simulation.results.financiamento.mensais.valorTotalMensal)%>
+        </li>
+        <li><b>Semestrais:</b>
+            <%=formatReal(simulation.results.financiamento.semestrais.valorTotalSemestral)%>
+        </li>
+        <li><b>Chaves:</b>
+            <%=formatReal(simulation.results.financiamento.chaves.valor)%>
+        </li>
+    </ul>
+
+    <ol type="a">
+        <li>O valor R$ ( ), neste ato, como Sinal e princípio de pagamento, por meio de TED para o Banco Itaú, agência 3116, conta corrente 22211-2 de titularidade de RKM 03 SPE EMPREENDIMENTOS IMOBILIÁRIOS LTDA , ficando a quitação dessa parcela condicionada à efetiva compensação da TED, pela qual a <b>VENDEDORA</b> dará plena, rasa, geral e irrevogável quitação.<br>
+            O valor R$ ( ), com vencimento em XX/XX/2018, e o valor de R$ ( ), com vencimento em XX/XX/2018, por meio de boleto bancário a ser enviado para o e-mail cadastrado.</li>
+        <li>O valor de R$ ( ), a serem pagos em 33 (trinta e três) prestações mensais e consecutivas, no valor de R$ ( ) cada, vencendo-se a 1a em 20/XX/2018, por meio de boleto bancário a ser enviado para o e-mail cadastrado;</li>
+        <li>O valor de R$ ( ), a serem pagos em 02 (duas) prestações anuais e consecutivas, no valor de R$ ( ) cada, vencendo-se a 1a em 20/XX/2018, e a 2 em 20/XX/2018 por meio de boleto bancário a ser enviado para o e-mail cadastrado;</li>
+        <li>O valor de R$ ( ), será pago em parcela única e com vencimento em 31/10/2020, por meio de TED para o Banco Itaú, agência 3116, conta corrente 22211-2 de titularidade de RKM 03 SPE EMPREENDIMENTOS IMOBILIÁRIOS LTDA , ficando a quitação dessa parcela condicionada à efetiva compensação da TED, pela qual a <b>VENDEDORA</b> dará plena, rasa, geral e irrevogável quitação.</li>
+    </ol>
+
+
+    <p><b>2.2.</b> Em caso de antecipação da conclusão das obras do empreendimento, a <b>VENDEDORA</b> deverá comunicar ao <b>COMPRADOR</b> que no prazo de 60 dias as parcelas do preço então em aberto serão consideradas imediatamente vencidas cabendo a ele providenciar a contratação de financiamento bancário para a quitação do saldo devedor atualizado ou, alternativamente, efetuar o pagamento com recursos próprios.</p>
+    <p><b>2.3</b> A fim de preservar o equilíbrio econômico-financeiro deste contrato, as partes convencionam, como condição essencial do presente negócio, que o valor de cada uma das parcelas será corrigida monetária e mensalmente, em face do disposto no artigo 46 da Lei n.o 10.931/04, pelos seguintes critérios, as parcelas referidas no item 2.1, alínea “a’ a d”, serão corrigidas, até o mês subseqüente ao da emissão do Certificado de Conclusão da Obra (“Habite-se”), de acordo com a variação percentual mensal acumulada do INCC-DI (Índice Nacional de Custo da Construção – Disponibilidade Interna), calculado e divulgado pela Fundação Getúlio Vargas, tomando-se como índice-base o divulgado no mês anterior a assinatura do presente contrato e, como índice-reajuste, o divulgado no mês anterior ao efetivo pagamento da prestação. A partir do referido evento até a integral quitação das parcelas em aberto, o saldo devedor passará a ser corrigido de acordo com a variação do IGP-M/FGV, com acréscimo de juros remuneratórios de 1% (um por cento) ao mês a partir da data da expedição da matrícula individualizada do imóvel, já com o “habite-se” averbado.</p>
+    <p><b>2.3.1.</b> Se o INCC/FGV, for extinto ou considerado inaplicável a este contrato, as partes estabelecem, desde já, que as prestações do preço vencidas e não pagas, e as vincendas, passarão, automaticamente e de pleno direito, a ser corrigidas monetariamente de acordo com a variação percentual acumulada do:</p>
+
+    <ol type="a">
+        <li>ICC – BELO HORIZONTE TOTAL (SÉRIE A0160957), calculado e divulgado pela Fundação Getúlio Vargas, tomando-se como índice-base o divulgado no mês anterior à substituição e como índice-reajuste o divulgado dois meses antes ao do efetivo pagamento da prestação;</li>
+        <li>e, na falta do índice anterior, o CUB – Custo Unitário Básico (Padrão H12 2 A), calculado e divulgado pelo Sinduscon, tomando-se como índice-base o divulgado no mês anterior à substituição e como índice-reajuste o divulgado dois meses antes ao do efetivo pagamento da prestação;</li>
+        <li>e, ainda, na falta dos índices anteriores, o da Construção Civil e Obras Públicas – Edificações - FIPE (Fundação Instituto de Pesquisas Econômicas).</li>
+    </ol>
+
+    <p><b>2.4.</b> Fica assegurado ao <b>COMPRADOR</b> o direito de antecipar pagamentos a qualquer tempo, desde que observado o critério de atualização do valor da parcela respectiva. Nesse caso, os pagamentos serão considerados como antecipação da(s) última(s) parcela(s) devida(s), não afetando o vencimento e a exigibilidade das parcelas na ordem estipulada.</p>
+    <p><b>2.5.</b> Na hipótese de amortização total e antecipada do saldo do preço, a escritura de compra e venda somente será conferida ao <b>COMPRADOR</b> após regularizada toda a documentação legal do empreendimento, nos termos deste instrumento.</p>
+    <p><b>2.6.</b> Serão enviados para pagamento ao endereço eletrônico do <b>COMPRADOR</b> boletos de cobrança bancária, sendo certo que a falta de recebimento dos boletos bancários representativos das prestações não exime o <b>COMPRADOR</b> da obrigação de efetuar qualquer dos pagamentos previstos no presente contrato, nem poderá servir de justificativa para o atraso em sua liquidação. O <b>COMPRADOR</b> deverá informar, por escrito, eventual alteração de endereço eletrônico.</p>
+    <p><b>2.7.</b> Fica vedado qualquer outro pagamento com crédito direto na conta corrente da <b>VENDEDORA</b>, seja por depósito, transferência, transferência Eletrônica Disponível – TED, DOC, ou outro meio, ficando desde já estabelecido pelas partes que o comprovante de eventual pagamento feito diretamente em conta da <b>VENDEDORA</b> não valerá como recibo, tampouco conferirá quitação, salvo no caso de consentimento por escrito da <b>VENDEDORA</b>.</p>
+    <p><b>2.8.</b> Para fins de pagamento da parcela do preço mencionada na alínea “d” da cláusula 2.1 acima, poderá ser contratado pelo <b>COMPRADOR</b> um financiamento bancário junto à instituição financeira de sua escolha, ficando certo que a dívida então existente somente será considerada liquidada por ocasião da liberação integral, por parte da instituição financeira à <b>VENDEDORA</b>, correndo os encargos de correção monetária e eventuais juros até a data de tal liberação integral.</p>
+    <p><b>2.8.1</b> Se as instituições financeiras não estiverem realizando financiamento para o pagamento da parcela acima descrita, o <b>COMPRADOR</b> deverá arcar com recursos próprios. Caso o <b>COMPRADOR</b> não realize o pagamento, será considerado inadimplente e incorrerá nas penalidades impostas pelo item 4 abaixo.</p>
+    <p><b>2.8.2</b> A <b>VENDEDORA</b> poderá livremente promover a transferência, cessão ou caução, total ou parcial dos direitos e créditos decorrentes deste instrumento a quaisquer pessoas físicas e/ou jurídicas, sendo que o crédito ora constituído poderá servir para a emissão de Certificados de Recebíveis Imobiliários (CRI), de Cédulas de Credito Imobiliário (CCI) ou outros títulos, consoante o disposto na Lei 9.514 de 20.11.97, na Lei 10.931/2004 e respectivas alterações.</p>
+    <p><b>2.9</b> No caso de obtenção de financiamento bancário, a parcela do preço mencionada na alínea “d” da cláusula 2.1 acima será corrigida monetária e mensalmente de acordo com a variação percentual mensal acumulada do IGPM, calculado e divulgado pela Fundação Getúlio Vargas, tomando-se como índice-base o divulgado no mês anterior ao do presente contrato e, como índice-reajuste, o divulgado no mês anterior ao efetivo pagamento da prestação, até 120 (cento e vinte) dias a contar da entrega de toda documentação exigida pelo Banco Financiador. Após este prazo, o <b>COMPRADOR</b> será considerado inadimplente e a parcela será reajustada conforme descrito em 4.1.</p>
+    <p><b>2.10</b> O prazo da <b>VENDEDORA</b> para a entrega, ao <b>COMPRADOR</b>, da documentação exigida pelo Banco Financiador será de 90 (noventa) dias após a obtenção do Habite-se.</p>
+    <p><b>2.11</b> A entrega das chaves será disponibilizada para o <b>COMPRADOR</b>, somente após ele apresentar à <b>VENDEDORA</b> a matrícula atualizada do imóvel com o contrato de financiamento devidamente registrado. Em caso de quitação do preço com recursos próprios as chaves serão entregues depois do pagamento da última parcela.</p>
+
+    <h3>3. CLÁUSULA RESOLUTIVA</h3>
+    <p>Os <b>COMPRADOR</b>ES declaram e se responsabilizam, para todos os fins de direto, e sob as penas da Lei, pela veracidade de todas as informações prestadas e declaradas, constantes da Ficha Cadastral, firmada na data de <b>12/03/2018</b>, anexo ao presente Contrato, obrigando-se, ainda, a enviar toda a documentação necessária à comprovação de tais informações, dentro do prazo de 15 (QUINZE) dias úteis, sendo certo que, na hipótese das informações prestadas não serem verdadeiras, ou serem insuficientes, o que implica, por conseqüência, na não aprovação do cadastro, restará rescindido o presente Contrato, de pleno direito, independente de qualquer notificação ou interpelação, o que implicará na conseqüente restituição de todos os valores por ele(s), eventualmente, desembolsados.</p>
+
+
+    <h3>4. INADIMPLEMENTO E RESCISÃO</h3>
+
+
+    <p><b>4.1.</b> A mora do <b>COMPRADOR</b> no cumprimento das obrigações pecuniárias assumidas neste contrato acarretará a responsabilidade pelo pagamento das seguintes penalidades:</p>
+
+    <ol type="a">
+        <li>
+            <p>reajuste monetário, de acordo com o INCC (Índice Nacional de Custo da Construção Civil), se a parcela referir-se a período anterior ao “Habite-se” ou de acordo com o IGP-M (Índice Geral de Preços-Mercado) acrescidos de juros de 12% (doze por cento) ao ano, se a parcela referir-se a período posterior a emissão do Habite-se e calculado "pro rata dies", observado o critério a seguir:</p>
+
+            <ol>
+                <li>quando o pagamento ocorrer além da data do vencimento da prestação, mas dentro do mês de seu vencimento, o valor da prestação, calculado na forma deste contrato, será atualizado monetariamente, desde o dia de seu vencimento, até o dia de seu efetivo pagamento, mediante a incidência diária de 1/30 da última variação percentual disponível, entre os valores do índice eleito neste contrato;</li>
+                <li>quando o pagamento ocorrer em mês posterior ao do vencimento da prestação, o valor desta será atualizado monetariamente até o mês em que se der o pagamento, com base no critério de atualização monetária aqui previsto. A partir daí, e até o dia em que, nesse mês, for efetuado o pagamento, seus valores serão atualizados monetariamente pelo mesmo critério previsto na letra "a.1", supra;</li>
+            </ol>
+
+        </li>
+        <li>juros de mora de 1% (um por cento) ao mês, ou fração, calculados dia a dia, que incidirão sobre o valor do principal da(s) parcela(s) em atraso, reajustado monetariamente, sem prejuízo da incidência dos juros compensatórios, incluídos no valor de cada parcela;</li>
+        <li>multa moratória de 2% (dois por cento) sobre o valor da parcela, incidente sobre o valor do principal, corrigido monetariamente;</li>
+        <li>honorários de advogado, na base de 10% (dez por cento) sobre o valor do débito, e despesas judiciais e extrajudiciais, na hipótese de iniciado o processo de notificação;</li>
+    </ol>
+
+    <p><b>4.2.</b> A mora do <b>COMPRADOR</b> será ratificada, mediante notificação judicial ou extrajudicial, encaminhada pela <b>VENDEDORA</b> ao endereço do <b>COMPRADOR</b> indicado neste Contrato, com prazo de quinze (15) dias para sua purgação.</p>
+    <p><b>4.3.</b> Iniciada a interpelação e mesmo que não concretizada, o <b>COMPRADOR</b> que pretender purgar a mora deverá fazê-lo com o pagamento, além do principal reajustado e acrescido da multa e dos juros de mora, das despesas judiciais e extrajudiciais, provocadas por seu atraso, acrescidos de honorários de advogado.</p>
+    <p><b>4.4.</b> O simples pagamento do principal, sem reajuste monetário e sem os demais acréscimos moratórios, não exonerará o <b>COMPRADOR</b> da responsabilidade de liquidar tais obrigações, continuando em mora, para todos efeitos legais e contratuais.</p>
+    <p><b>4.5.</b> Não obstante seu caráter de irrevogabilidade e irretratabilidade, o presente contrato será considerado resolvido de pleno direito, a critério da <b>VENDEDORA</b>:</p>
+    <ol type="a">
+        <li>se o <b>COMPRADOR</b>, depois de intimado nos termos do item 4.2 desta Cláusula, permanecer em mora em relação ao pagamento de qualquer parcela do preço de aquisição da(s) unidade(s) autônoma(s) nos prazos e condições definidos na cláusula 2.1 deste contrato;</li>
+        <li>se o <b>COMPRADOR</b> não cumprir qualquer outra obrigação prevista neste contrato.</li>
+    </ol>
+
+    <p><b>4.6.</b> A critério da <b>VENDEDORA</b>, a mora não purgada se transformará em inadimplemento absoluto, quando, então, este contrato será considerado resolvido, de pleno direito e em sua integralidade.</p>
+    <p><b>4.7.</b> Na hipótese de inadimplemento do <b>COMPRADOR</b>, a <b>VENDEDORA</b> poderá optar, a seu único e exclusivo critério, por:</p>
+
+    <ol type="a">
+        <li>ou considerar vencida por antecipação a totalidade do preço de alienação da(s) unidade(s) autônoma(s), hipótese em que o <b>COMPRADOR</b> lhe pagará, além do principal, reajustável monetariamente, os juros de mora e a multa acima convencionados, tudo cobrável através de ação competente, respondendo, ainda, o <b>COMPRADOR</b> pelas custas processuais e honorários advocatícios;</li>
+        <li>ou então, a seu exclusivo critério, e renunciando à faculdade acima prevista, a <b>VENDEDORA</b> poderá considerar resolvido, de pleno direito, este contrato, na forma adiante estipulada;</li>
+        <li>ou então, ainda a seu exclusivo critério, e se não desejar permanecer como titular da(s) unidade(s) autônoma(s) e respectivas benfeitorias e construções, poderá a <b>VENDEDORA</b> providenciar a alienação, de acordo com o disposto no item 4.9, de todos os direitos e obrigações de que o <b>COMPRADOR</b> seja titular.</li>
+    </ol>
+
+    <p><b>4.8.</b> Deixando o (s) <b>COMPRADOR</b> (ES) de cumprir, no todo ou em parte, quaisquer das obrigações ajustadas neste instrumento, no prazo de até 90 (noventa) dias após o vencimento, a <b>VENDEDORA</b> poderá, a seu critério, cobrar o saldo devedor em sua totalidade ou dar como rescindido o presente contrato e a retomada do imóvel alienado, caso a sua posse já tenha sido transferida. Na hipótese de rescisão deste contrato por culpa ou iniciativa unilateral do <b>COMPRADOR</b> serão aplicadas as seguintes rentenções/penalidades:</p>
+    <ol type="a">
+        <li>Retenção integral de juros compensatórios, se tiverem sido cobrados;</li>
+        <li>Retenção integral de juros moratórios e multa de mora, pagos quando de eventual purga de mora;</li>
+        <li>Retenção dos valores pagos a título de indenização pelos tributos e contribuições pagos pela <b>VENDEDORA</b> sobre as receitas recebidas, tais como PIS, COFINS, IR e CSLL;</li>
+        <li>Retenção de 6% (seis por cento) sobre o valor atualizado de acordo com os critérios para correção a título de indenização pelas despesas com pagamento de comissão de corretagem incidente sobre o negócio, considerando que tal verba, por ter sido regularmente prestado o serviço, não será devolvida por quem a recebeu.</li>
+        <li>Multa de 15% (quinze por cento) sobre os valores pagos a título de compensação pela extinção antecipada do negócio jurídico.</li>
+        <li>Despesas de publicidade, de corretor de imóveis, na base de cinco por cento (5%) e seis por cento (6%), respectivamente, sobre o valor do contrato (principal e acréscimos) em atraso, na hipótese de iniciada ou concluída a alienação dos direitos do <b>COMPRADOR</b> a terceiros;</li>
+    </ol>
+
+    <p><b>4.8.1.</b> Deduzidas as parcelas mencionadas nas alíneas do item 4.8, o saldo, se houver, será restituído ao <b>COMPRADOR</b> em tantas prestações mensais quantas tiverem sido as prestações pagas, assim como o critério para correção corresponderá àquele adotado neste contrato durante o período de construção.</p>
+    <p><b>4.8.2.</b> O <b>COMPRADOR</b> receberá referida devolução, se couber, desde que o imóvel tenha sido restituído à <b>VENDEDORA</b>, livre e desocupado de pessoas e coisas, e reposto ao idêntico estado de quando lhe foi entregue.</p>
+    <p><b>4.8.3.</b> Na hipótese de resolução, judicial ou extrajudicial, a <b>VENDEDORA</b> terá livre disponibilidade sobre o imóvel, podendo, inclusive, aliená-lo, desde logo, a terceiros, ainda que não tenha restituído ao <b>COMPRADOR</b> as quantias a ele porventura devidas, na forma deste contrato, inclusive no caso em que o <b>COMPRADOR</b> deixar de recebê-las, por sua ação ou omissão.</p>
+    <p><b>4.9.</b> Para a alienação da(s) unidade(s) autônoma(s), decorrente do inadimplemento do <b>COMPRADOR</b>, serão adotados os seguintes parâmetros:</p>
+
+    <ol>
+        <li>a legitimação ativa caberá à <b>VENDEDORA</b>;</li>
+        <li>
+            <p>a sub-rogação do <b>COMPRADOR</b> será promovida por um dos seguintes modos:</p>
+            <ol>
+                <li>alienação a terceiros da(s) respectiva(s) unidade(s) autônoma(s), ou de direitos à sua aquisição, diretamente, através de instrumento público ou particular, decorrente ou não de leilão, deduzindo-se do preço as quantias referidas nos itens 4.1 e 4.8, e o saldo, porventura existente, será depositado em conta corrente aberta nos termos da cláusula 17.9. “b”, adiante;</li>
+                <li>essa alienação poderá ser efetuada, diretamente, a terceiros, observadas, no que forem aplicáveis, as disposições dos §§ 4o, 5o, 6o e 7o, do art. 63, da Lei no 4.591/64;</li>
+                <li>procedendo-se à alienação por leilão, a segunda praça será realizada uma hora após ter sido efetuada a primeira, e, no caso de nesta não ter sido apurado o "quantum" mencionado no § 2o, do art. 63, da Lei no 4.591/64. Se, mesmo em segunda praça, os direitos não forem arrematados, serão realizados tantos leilões quantos forem necessários, até a arrematação da(s) unidade(s) autônoma(s). O leilão, primeira e segunda praças, será anunciado, num só aviso, publicado pelo menos uma vez no Diário Oficial do Estado e em outro jornal do local da obra;</li>
+            </ol>
+        </li>
+        <li>para os fins aqui previstos, fica a <b>VENDEDORA</b> investida do mandato irrevogável a que se refere o § 5o, do art. 63, da Lei no 4.591/64, cujos poderes, lá discriminados, são considerados como se aqui estivessem literalmente transcritos.</li>
+    </ol>
+
+    <p><b>4.10.</b> Ocorrendo a resolução deste contrato, a pessoa, em cujo favor se tenha operado a resolução, sub- rogará o <b>COMPRADOR</b> em todos os direitos e obrigações atribuídos contratualmente. A referida pessoa deverá pagar todo o débito do <b>COMPRADOR</b>, em relação à unidade(s) autônoma, de uma só vez e em moeda corrente ou na forma ajustada com a <b>VENDEDORA</b>.</p>
+    <p><b>4.11.</b> O <b>COMPRADOR</b> perderá, em favor da pessoa a quem se operar a resolução, todas as acessões, benfeitorias e construções acrescidas ao imóvel, tudo sem direito a qualquer restituição, compensação ou retenção.</p>
+
+    <h3>5. OBTENÇÃO DE FINANCIAMENTO E HIPOTECA DO TERRENO E DAS UNIDADES AUTÔNOMAS</h3>
+    <p><b>5.1.</b> O <b>COMPRADOR</b> declara ter ciência de que a <b>VENDEDORA</b> poderá, a qualquer momento, obter junto a uma instituição financeira (agente do Sistema Financeiro da Habitação ou outro) recursos destinados a financiar a construção do empreendimento e, em consequência, constituir garantia hipotecária, fiduciária, securitária ou de outra natureza junto àquela instituição, abrangendo não só o terreno, como todas as unidades autônomas do edifício, inclusive a(s) que ora é prometida à venda, bem como os direitos creditórios resultantes da alienação do empreendimento ou de qualquer uma de suas unidades autônomas, com o que expressamente concorda o <b>COMPRADOR</b>.</p>
+    <p><b>5.2.</b> O <b>COMPRADOR</b> declara-se ciente e de acordo com que os recursos financeiros mencionados na cláusula anterior, sejam tomados apenas em nome da <b>VENDEDORA</b> ou em nome da Sociedade de Propósito Específicos (SPE) e só serão aplicados nas obras do prédio cuja unidade(s) é objeto desta promessa.</p>
+    <p><b>5.3.</b> O <b>COMPRADOR</b>, desde logo, outorga especial mandato à <b>VENDEDORA</b>, com vigência até a averbação do “Habite-se” no Registro de Imóveis, para contratar o mútuo acima referido ou corroborá-lo, de forma irrevogável e irretratável, e obriga-se a anuir e a comparecer no contrato de mútuo hipotecário e/ou fiduciário e/ou securitário e/ou de outra natureza, se assim vier a ser exigido pela instituição financeira. O mandato inclui poderes para representação do <b>COMPRADOR</b> perante os Serviços de Notas e/ou do Registro de Imóveis, Prefeitura, Estado e União Federal, em todos os seus departamentos e órgãos, concessionários de serviços públicos, de modo que a mandatária possa realizar registros, averbações, retificações, firmar compromissos e praticar quaisquer atos necessários ao bom andamento e à conclusão das obras, respeitando a <b>VENDEDORA</b>, em quaisquer circunstâncias, as especificações relativas à qualidade de materiais de acabamento e as áreas privativas da(s) unidade(s) prometidas à compra e venda, constantes do memorial de incorporação depositado no cartório hábil.</p>
+    <p><b>5.4.</b> As partes concordam em que está promessa não deverá ser levada ao Registro de Imóveis, para não inviabilizar ou dificultar a contratação do referido empréstimo</p>
+    <p><b>5.5.</b> A <b>VENDEDORA</b> obriga-se, prazo máximo de até 90 (noventa) dias contados da averbação do “habite-se” na matrícula do imóvel e como condição para a realização do pagamento da parcela final do preço, a providenciar o cancelamento de eventual gravame, liberando, dessa forma, o imóvel para transferência da propriedade ao <b>COMPRADOR</b>.</p>
+
+    <h3>6. ENTREGA DO IMÓVEL</h3>
+    <p><b>6.1.</b> As obras de construção do <%=simulation.results.unit.enterprise.name%> estão a cargo e responsabilidade da <b>VENDEDORA</b>, sob o regime de empreitada global a preço reajustável, e serão concluídas até 31 de dezembro de 2020, não se confundido a data prevista para a conclusão das obras com o momento de entrega das chaves, este integralmente condicionado à quitação integral do saldo deverdor.</p>
+    <p><b>6.1.1.</b> As áreas comuns do empreendimento serão mobiliadas e equipadas pela <b>VENDEDORA</b>, a seu critério, não cabendo ao <b>COMPRADOR</b> opnar quanto à escolha de mobiliário ou qualquer outra questão referente à decoração ou equipamento dessas áreas.</p>
+    <p><b>6.1.2.</b> O <b>COMPRADOR</b> estará sujeito ao pagamento da chamada “taxa de enxoval” correspondente à decoração das áreas comuns do edifício, as quais serão entregues montadas e mobiliadas pela <b>VENDEDORA</b>.</p>
+    <p><b>6.1.3.</b> O valor de R$ 25.000,00 (vinte e cinco mil reais), referente a taxa de enxoval a ser pago em 5 parcelas mensais de R$ 5.000,00 (cinco mil reais), vencendo-se a primeira em 20/04/20, devidamente atualizada pelo INCC/FGV a partir de 01/03/2018.</p>
+    <p><b>6.1.4.</b> Mesmo após a conclusão do empreendimento e entrega da(s) unidade(s), a <b>VENDEDORA</b> e seus contratados terão livre acesso ao terreno do condomínio,desde que devidamente identificados.</p>
+    <p><b>6.1.5.</b> Por razões de segurança, fica vedada ao <b>COMPRADOR</b> qualquer interferência, direta ou indiretamente, na obra. Não será permitida visita do <b>COMPRADOR</b> à obra, a não ser em casos excepcionais, com autorização escrita da construtora, com hora e data marcada com pelo menos 05 (cinco) dias de antecedência e sempre na presença do encarregado da obra, sendo tais autorizações proibidas nos 120 (cento e vinte) dias anteriores à data da entrega, período no qual ficariam prejudicados os serviços finais.</p>
+    <p><b>6.2.</b> Considerando as diversas variáveis que podem afetar o curso de obras do porte do empreendimento objeto desse contrato o prazo previsto para conclusão das obras estará sujeito a uma tolerância de 180 (cento e oitenta) dias, independetemente da ocorrência de qualquer evento ou fato específico, sem que possa ser imputada à <b>VENDEDORA</b> qualquer penalidade.</p>
+    <p><b>6.3.</b> Não concluídas, todavia, as obras dentro do prazo de tolerância a <b>VENDEDORA</b> pagará mensalmente ao <b>COMPRADOR</b> o equivalente a 0,1% (um décimo por cento) por mês do valor atualizado deste contrato, pago em moeda corrente pelo <b>COMPRADOR</b>, até a data da entrega da(s) unidade(s) autônoma(s), desde que nenhuma solicitação de modificação da unidade autônoma tenha sido feita pelo <b>COMPRADOR</b>.</p>
+    <p><b>6.4.</b> Fica estabelecido que a data de entrega da(s) unidade(s) autônoma(s) é a data de expedição do “Habite-se” do <%=simulation.results.unit.enterprise.name%>, expedido pela Prefeitura de Belo Horizonte. A partir desta data, desde que tenha sido quitado o preço integral do imóvel a <b>VENDEDORA</b> disponibilizará para o <b>COMPRADOR</b>, então, as chaves da(s) unidade(s), dando, assim, a posse precária do imóvel ao <b>COMPRADOR</b> e reservando a si a posse indireta do imóvel, que somente se considerará transmitida no ato da outorga da escritura definitiva de compra e venda.</p>
+    <p><b>6.4.1.</b> O prazo acima não inclui o tempo necessário para execução de serviços extraordinários, acessórios e complementares, assim entendidos aqueles não especificados no memorial descritivo e especificações do edifício.</p>
+    <p><b>6.5.</b> A eventual existência de serviços complementares de pequena monta a serem realizados em unidades autônomas não poderão servir de fundamento para recusa ao recebimento das chaves pelo <b>COMPRADOR</b>, nem impedir a instalação formal do condomínio.</p>
+    <p><b>6.6.</b> No prazo de conclusão das obras não se inclui o tempo gasto para obtenção do “Habite-se” e Certidão Negativa de Débitos junto ao INSS, nem atraso de ligações de concessionárias de serviços públicos.</p>
+    <p><b>6.7.</b> A liberação da(s) unidade(s) pela <b>VENDEDORA</b> se dará através de “Termo de Recebimento do Imóvel”, sendo certo que as chaves somente serão entregues ao <b>COMPRADOR</b>, desde que esteja em dia com as obrigações assumidas neste contrato, podendo a <b>VENDEDORA</b> retê-la até que o <b>COMPRADOR</b> satisfaça as suas obrigações contratuais.</p>
+    <p><b>6.7.1.</b> O <b>COMPRADOR</b> assume o compromisso de marcar data para vistoriar o apartamento objeto do presente instrumento, e receber as respectivas chaves, assinando o respectivo Termo de Recebimento do Imóvel no prazo de até 30 (trinta) dias contados da data do “Habite-se”, desde que cumpridas as obrigações do item 6.7.</p>
+    <p><b>6.7.2.</b> A vistoria que ocorrerá em horário comercial pré-agendado, será acompanhada por representante designado pela <b>VENDEDORA</b>.</p>
+    <p><b>6.7.3.</b> Caso o <b>COMPRADOR</b>, uma vez notificado nos termos da cláusula 6.7.1 acima, não se apresente a vistoria e/ou para recebimento da unidade autônoma que ora lhe é prometida em venda, ou se recuse infundadamente a assinar o mencionado Termo de Recebimento do Imóvel, tal fato importará na aceitação da unidade autônoma para todos os efeitos legais e contratuais.</p>
+    <p><b>6.7.4.</b> Para o recebimento das chaves o <b>COMPRADOR</b> deverá estar totalmente adimplente com todas as obrigações decorrentes deste instrumento, assim como também dos “contratos de personalização”, se houver, sob pena de a <b>VENDEDORA</b> exercer o direito de retenção da(s) unidade(s) na forma permitida pelo artigo 52 da Lei n° 4.591/64.</p>
+    <p><b>6.8.</b> A liberação das chaves ocorrerá independentemente da ligação de linha telefônica e/ou instalações especiais (tais como gás ou TV a Cabo) na(s) unidade(s) autônoma(s) do <b>COMPRADOR</b>, por cuja conta exclusiva correrá as providências, responsabilidade e despesas, cabendo à <b>VENDEDORA</b> tão-somente a execução das instalações próprias, segundo especificações técnicas de construção e o projeto aprovado, até o ponto de interseção com as ligações tronco da rede pública.</p>
+    <p><b>6.9.</b> A entrega da(s) unidade(s) ao <b>COMPRADOR</b> implicará sua sub-rogação no direito de uso do imóvel e assunção das obrigações daí derivadas, especialmente, mas não exclusivamente, as relativas à adequação deste uso às normas e posturas municipais, condominiais e de vizinhança, assim como de manutenção e conservação adequadas da(s) unidade(s) autônoma(s) e correspondentes partes comuns do edifício.</p>
+    <p><b>6.10.</b> Caso o <b>COMPRADOR</b> venha a ocupar a sua(s) unidade(s) sem a quitação da parcela prevista na letra “d” da Cláusula 2.1, será ele considerado esbulhador e submeter-se-á à competente Ação de Reintegração de Posse, com pedido liminar de desocupação, ficando, ainda, o <b>COMPRADOR</b> obrigado a pagar a multa diária de ocupação, ora fixada em um décimo percentual (0,1%) sobre o preço de venda, corrigido pelos índices aqui pactuados, e devida desde o primeiro dia subsequente ao pagamento da última parcela, até a efetiva devolução do imóvel. O disposto nesta cláusula se aplica sem prejuízo da <b>VENDEDORA</b> poder considerar este contrato como rescindido por inadimplemento do <b>COMPRADOR</b>, conforme regras estabelecidas nas cláusulas 4.1 e seguintes, acima.</p>
+    <p><b>6.10.1</b> O <b>COMPRADOR</b> receberá referida devolução, se couber, desde que o imóvel tenha sido restituído à <b>VENDEDORA</b>, livre e desocupado de pessoas e coisas, e reposto ao idêntico estado de quando lhe foi entregue.</p>
+    <p><b>6.11.</b> A partir do “Habite-se” da sua unidade autonoma, independentemente do recebimento das chaves, o <b>COMPRADOR</b> ficará responsável pelo pagamento das despesas de condomínio, de IPTU, ou congêneres, relativas à(s) unidade(s) por ele adquirida, bem como continuará responsável pelo pagamento das parcelas do saldo do preço que se vencerem após essa data. O <b>COMPRADOR</b> declara que está ciente de que as chaves da(s) unidade(s) não serão entregues se estiver inadimplente. Todavia, a eventual inadimplência do <b>COMPRADOR</b>, que acarrete a retenção das chaves, não exclui sua responsabilidade pelo pagamento das despesas de condomínio e tributos e/ou taxas incidentes sobre a(s) unidade(s) por ele adquirida(s).</p>
+    <p><b>6.11.1.</b> O <b>COMPRADOR</b> declara-se ciente de que deverá reembolsar a <b>VENDEDORA</b>, quando tal reembolso for por esta solicitado, em até 05 (cinco) dias, pelas quantias que ela houver adiantado para pagamento de tributos e contribuições detalhados na cláusula acima, as quais serão reembolsadas com acréscimo de juros de 1% a.m., desde a data do pagamento até a data em que se der o reembolso.</p>
+    <p><b>6.12.</b> As chaves serão entregues ao <b>COMPRADOR</b>, e não a seu cessionário ou sub-rogatário, na hipótese de ter alienado seus direitos e obrigações sem a anuência da <b>VENDEDORA</b>, na forma estabelecida neste instrumento.</p>
+
+    <h3>7. ESCRITURA DEFINITIVA DE VENDA E COMPRA</h3>
+
+    <p><b>7.1.</b> A escritura definitiva da fração ideal e da(s) unidade(s) autônoma será outorgada, pela <b>VENDEDORA</b> ao <b>COMPRADOR</b>, após averbação do “Habite-se” e registro da Especificação e Convenção de Condomínio no Cartório de Registro de Imóveis competente, desde que satisfeitas todas as obrigações assumidas pelo <b>COMPRADOR</b> neste instrumento.</p>
+    <p><b>7.1.1.</b> A escritura será lavrada em Cartório de Notas escolhido a critério exclusivo da <b>VENDEDORA</b>.</p>
+    <p><b>7.1.2.</b> A escritura aqui referida será outorgada no prazo máximo de 180 (cento e oitenta) dias contados do Registro da Especificação, Instituição e Convenção do Condomínio, ou do pagamento total do preço da compra e venda, o que por último ocorrer, e desde que solicitada, por escrito, pelo <b>COMPRADOR</b>, com 30 (trinta) dias de antecedência. Caso o <b>COMPRADOR</b> não a solicite, poderá a <b>VENDEDORA</b> marcar dia, hora e local para que o <b>COMPRADOR</b> compareça e receba a escritura a que tem direito.</p>
+    <p><b>7.2.</b> A entrega das chaves e a posse do imóvel estão condicionadas à quitação do preço do imóvel.</p>
+    <p><b>7.3.</b> O não comparecimento do <b>COMPRADOR</b>, na data aprazada para lavratura da escritura definitiva de venda e compra do imóvel o sujeitará ao pagamento de multa moratória diária ora fixada em um décimo percentual (0,1%) sobre o preço de venda do imóvel, corrigido pelos índices aqui pactuados.</p>
+
+    <h3>8. ALTERAÇÕES DO PROJETO PELA <b>VENDEDORA</b></h3>
+    <p><b>8.1.</b> A <b>VENDEDORA</b> poderá modificar o projeto aprovado, sem alterar a área privativa de construção da unidade(s) objeto deste compromisso, ou, ainda, alterar ou substituir as especificações de acabamento, incluindo as das partes comuns da edificação e as das unidades, desde que por outras de equivalente qualidade ou função, nas seguintes hipóteses: (a) falta no mercado de materiais, produtos ou equipamentos mencionados; (b) necessidade de ordem técnica, comercial ou estética relevante; (c) exigências de órgãos públicos ou de concessionárias de serviços públicos.</p>
+
+    <h3>ALTERAÇÕES NA UNIDADE AUTÔNOMA</h3>
+    <p><b>9.1.</b> O <b>COMPRADOR</b> deverá definir junto à <b>VENDEDORA</b>, até o dia 30/12/2018_, todas as modificações e kits oferecidos pelo CONCEPT (Programa de personalização da <b>VENDEDORA</b>), tais como o layout do projeto arquitetônico escolhido para a unidade(s) autônoma(s) 2, 3 ou 4 quartos. As alterações e o valor referente a cada uma delas, constará em aditivos à parte. Caso o <b>COMPRADOR</b> não se manifeste até a data, a unidade será desenvolvida com 4 quartos sem cozinha americana para os apartamentos de 140 ou 141 metros quadrados ou 3 quartos com cozinha americana para os apartamentos de 103 ou 106 metros quadrados.</p>
+    <p><b>9.2.</b> Enquanto não imitido na posse da(s) unidade(s) autônoma(s), o <b>COMPRADOR</b> não poderá fazer visitas que não sejam previamente agendadas, nem interferir no andamento ou na condução das obras, nem executar, diretamente ou através de terceiros, obras ou serviços na(s) unidade(s) autônoma(s), modificar as respectivas especificações de acabamento ou substituir materiais ou equipamentos previstos nas especificações do edifício, a não ser por intermédio da <b>VENDEDORA</b>, conforme cláusula 9.1 acima.</p>
+
+    <h3>10. DESPESAS</h3>
+
+    <p><b>10.1.</b> Correrão por conta exclusiva do <b>COMPRADOR</b>:</p>
+    <ol type="a">
+        <li>A partir da data do “Habite-se” da sua unidade autonoma todos os impostos, taxas, inclusive de condomínio, contribuições e encargos que vierem a incidir sobre a(s) unidade(s) imobiliária e respectiva fração ideal do terreno, objeto deste compromisso, e partes comuns de edifício, mesmo que não tenha sido instalado jurídica e formalmente o condomínio. As obrigações atribuídas ao <b>COMPRADOR</b> neste item serão exigíveis ainda que não tenha sido entregue o apartamento ao <b>COMPRADOR</b> em virtude de ato ou fato do próprio <b>COMPRADOR</b>. Se a <b>VENDEDORA</b>, no entanto, efetuar aqueles pagamentos, deverá o <b>COMPRADOR</b> reembolsá-la conforme previsto no item 6.11.1;</li>
+        <li>As despesas diretamente decorrentes do presente negócio, tais como: seguro, imposto de transmissão, emolumentos de cartório, honorários de despachantes concernentes à escritura definitiva e seu registro, e quaisquer outras que vierem a ser necessárias ou que venham a ser criadas, ainda que lançadas em nome da <b>VENDEDORA</b> ou dela cobradas;</li>
+        <li>Individualmente e/ou rateadas dentro do Condomínio: as despesas com ligação de água, esgoto, energia elétrica, telefone e outras de serviços públicos.</li>
+    </ol>
+
+    <h3>11. GARANTIAS E NORMAS DE MANUTENÇÃO</h3>
+    <p><b>11.1.</b> Após receber a posse do imóvel, o <b>COMPRADOR</b> obriga-se a zelar, conservar e manter a sua(s) unidade(s) autônoma(s) e as partes de uso comum, através da administração do Condomínio, promovendo o que se fizer necessário, e respondendo pelas omissões e excessos e pelos danos que forem causados à(s) unidade(s) e/ou ao prédio, obrigando-se a cumprir e a fazer cumprir, por todas as pessoas que ocuparem a(s) unidade(s) a qualquer título, inclusive por locação, dentre outros, os seguintes pontos:</p>
+
+    <ol type="a">
+        <li>conservar as esquadrias da(s) unidade(s) e das partes comuns do edifício (as partes comuns através do condomínio), para evitar danos à sua durabilidade, prevenir infiltrações e manter a segurança, fazendo revisão a cada 12 (doze) meses; </li>
+        <li>não ferir a camada impermeabilizante, abaixo do revestimento do piso, dos boxes dos banheiros e sanitários, assim como a camada impermeabilizante das fachadas do prédio, que deverão ser reconstituídas, se necessário, por pessoas ou empresas habilitadas para tanto;</li>
+        <li>decorrido o prazo de garantia concedido pela <b>VENDEDORA</b>, rever a cada 12 (doze) meses, através do condomínio, as fachadas do prédio e repor os revestimentos que estiverem faltando, em decorrência da ação do tempo (sol, chuva, vento) ou outros fatores;</li>
+        <li>rever a cada 12 (doze) meses, através do condomínio, as lajes de cobertura de responsabilidade e de uso comum do edifício, assim como as lajes impermeabilizantes dos pavimentos de uso comum da garagem e pilotis, a fim de repor danos derivados da ação do tempo (sol, chuva, vento) ou outros fatores;</li>
+        <li>zelar, conservar e manter todos os equipamentos, instalações e acessórios da(s) unidade(s) e das partes comuns do prédio, promovendo seu uso adequado e fazendo os necessários reparos através da assistência técnica direta dos fabricantes ou de empresas de assistência técnica, por eles comprovadamente autorizadas;</li>
+        <li>promover, periodicamente e em especial nas épocas que antecedem o período de chuvas, através do condomínio, a limpeza sistemática das calhas e condutores de águas pluviais, desobstruindo dutos e demais acessórios coletores, de modo a assegurar perfeito e completo escoamento das águas pluviais, a fim de que sejam evitadas infiltrações no prédio e nas unidades que o compõem;</li>
+        <li>cuidar para que os serviços para o conserto de defeitos verificados só sejam feitos pela <b>VENDEDORA</b>, pela assistência técnica do fabricante ou por pessoa por este autorizada.</li>
+    </ol>
+
+    <p><b>11.2.</b> O não cumprimento das regras de garantia estipuladas nesta cláusula implicará perda do direito de reclamação contra ou perante a <b>VENDEDORA</b>.</p>
+    <p><b>11.3.</b> Em relação a possíveis defeitos ocultos, não aparentes na data da entrega da(s) unidade(s), que venham a surgir dentro do prazo de 180 (cento e oitenta dias) dias da entrega definitiva do imóvel, deverá o <b>COMPRADOR</b> solicitar a intervenção da <b>VENDEDORA</b>, por formulário próprio “Solicitação de Assistência Técnica” devidamente protocolado, especificando com detalhes a natureza e a origem do defeito, sem o qual não poderão ser atendidos.</p>
+    <p><b>11.4.</b> No ato da entrega da(s) unidade(s), o <b>COMPRADOR</b> firmará o “Termo de Recebimento do Imóvel”, no qual declarará ter a <b>VENDEDORA</b> atendido as especificações técnicas e de acabamento prometidas, conforme Memorial Descritivo, inclusive quanto aos equipamentos e instalações da(s) unidade(s), explicitando a sua anuência com relação à decadência dos prazos para possíveis reclamações, da seguinte forma:</p>
+
+    <ol type="a">
+        <li>Prazo de decadência de 3 (três) meses contados da data da entrega da(s) unidade(s) para vícios aparentes e de 3 (três) meses para vícios ocultos estes contados da data da ciência, desde que ocorridos dentro do prazo legal de garantia;</li>
+        <li>Prazo de 05 (cinco) anos, contados da data do “Habite-se” da(s) unidade(s), com relação a defeitos estruturais, defeitos de materiais de construção aplicados pela <b>VENDEDORA</b> e vícios de construção que ameacem a solidez, segurança e desempenho da edificação, quanto a desabamento ou ruína, vícios ou defeitos esses levantados através de laudo técnico, com a participação de técnico da <b>VENDEDORA</b>;</li>
+        <li>Os prazos de garantias específicas para cada material e serviços estarão relacionados no Manual do Proprietário, que será entregue ao <b>COMPRADOR</b> na entrega do apartamento.</li>
+    </ol>
+
+    <h3>12. CONVENÇÃO DE CONDOMÍNIO</h3>
+    <p><b>12.1.</b> O <b>COMPRADOR</b> declara estar ciente e de acordo com os termos da minuta de Convenção de Condomínio do <%=simulation.results.unit.enterprise.name%>, aderindo, neste ato, a todas as suas cláusulas e condições e obrigando-se a cumpri-las por si, seus herdeiros, seus sucessores, bem como qualquer ocupante do imóvel, ainda que por concessão gratuita ou locação por parte do <b>COMPRADOR</b>.</p>
+    <p><b>12.2.</b> Caso entenda a <b>VENDEDORA</b> ser necessário alterar a minuta da Convenção de Condomínio ou a própria e/ou o projeto construtivo primitivamente aprovado pela Prefeitura, para adequá-lo a novas imposições que surgirem, mesmo que ocorram após a assinatura deste compromisso, recebe do <b>COMPRADOR</b> autorização e mandato expresso para implementá-las, ficando estabelecido que não poderá ocorrer, em hipótese alguma, redução da área privativa real e das posições de garagens da(s) unidade(s) aqui compromissada.</p>
+
+    <h3>13. INSTALAÇÃO DO CONDOMÍNIO</h3>
+    <p><b>13.1.</b> É dever do <b>COMPRADOR</b> atender ao chamado da <b>VENDEDORA</b> para a instalação formal da administração do Condomínio do “Edifício AMÉRICO PAPINI”.</p>
+    <p><b>13.2.</b> Fica avençado que a <b>VENDEDORA</b> não terá responsabilidade por eventuais danos ou prejuízos decorrentes de atraso dos adquirentes na instalação da administração do edifício onde se localiza a unidade autônoma.</p>
+    <p><b>13.3.</b> As despesas com água, luz, ou outras porventura realizadas pela <b>VENDEDORA</b> no período entre a eleição do Síndico e o “Habite-se” de que sejam beneficiarias as unidades e/ou partes comuns do Edifício, dever-lhe-ão ser reembolsadas pela totalidade dos adquirentes do Edifício, mediante o rateio entre os mesmos, devidamente acrescidas de atualização monetária igual à variação acumulada do IGP-M, calculada desde o seu desembolso até a data do seu efetivo pagamento à <b>VENDEDORA</b>, o que deverá ocorrer no prazo máximo de 05(cinco) dias da sua apresentação, sob pena de multa de 10% (dez por cento).</p>
+    <p><b>13.4.</b> Enquanto não alienar todas as unidades do prédio, a <b>VENDEDORA</b> poderá utilizar as áreas comuns do Edifício com “Stand” de vendas, veiculação de propaganda e circulação de corretor(s), próprios ou de terceiros, sem que isso lhe acarrete qualquer despesa condominial extra, respeitados sempre o bom nível moral e social do prédio, a segurança e o sossego dos seus moradores e ocupantes.</p>
+
+    <h3>14. DA TRANSFERÊNCIA DO IMÓVEL</h3>
+    <p><b>14.1.</b> O <b>COMPRADOR</b>, somente após a venda de 80% (oitenta por cento) das unidades do empreendimento, poderá vender, ceder ou transferir seus direitos, ou posse, que têm sobre o imóvel objeto deste contrato, desde que o preço esteja quitado ou se houver prévia e expressa anuência da <b>VENDEDORA</b>, e desde que o primeiro esteja em dia com suas obrigações.</p>
+    <p><b>14.2.</b> Na hipótese de venda, cessão e/ou transferência do presente instrumento, será devida em favor da <b>VENDEDORA</b>, no ato da assinatura do instrumento em questão, uma taxa de expediente correspondente a 3,0% (três por cento) sobre o valor atualizado do contrato, ainda que a cessão se opere por valor menor ou mesmo gratuitamente, a título de despesas administrativas da cessão com a sub-rogação que se formalizará e, especialmente, em função da assunção de riscos não calculados pela <b>VENDEDORA</b> no ato da contratação original.</p>
+    <p><b>14.3.</b> O <b>COMPRADOR</b> deverá declarar sob as penas da lei que não tem qualquer impedimento, administrativo ou jurídico, que impeça a realização da cessão, colocando a <b>VENDEDORA</b> a salvo de reclamações de terceiros, a qualquer tempo.</p>
+
+    <h3>15. COMUNICAÇÃO</h3>
+    <p><b>15.1.</b> Para todos os efeitos e finalidades previstos nas cláusulas contratuais deste compromisso, as comunicações, notificações e interpelações de quaisquer das partes se farão por escrito e serão consideradas efetivadas quando entregues nos endereços citados no preâmbulo deste compromisso, independentemente da parte que firme o aviso de recebimento, ou, em caso de mudança, para o novo endereço, comunicado por escrito por uma das partes à outra.</p>
+    <p><b>15.2.</b> Qualquer modificação de endereço de correspondência deverá ser informada, por escrito, pelo <b>COMPRADOR</b> à <b>VENDEDORA</b>, sob pena de aquelas encaminhadas ao local indicado no presente contrato serem consideradas válidas e eficazes.</p>
+
+    <h3>16. IRREVOGABILIDADE E SUCESSÃO</h3>
+    <p><b>16.1.</b> O <b>COMPRADOR</b> declara que recebeu, valendo o presente como recibo, a planta interna de sua(s) unidade(s), planta de garagem e especificações básicas das áreas comuns e da(s) unidade(s) autônoma(s), as plantas com as benfeitorias contratadas, os quais ficam fazendo parte integrante e complementar do presente. Ressalvadas as hipóteses de inadimplemento das obrigações assumidas pelas partes neste contrato, o presente instrumento é celebrado em caráter irrevogável e irretratável, obrigando os contratantes e seus herdeiros e sucessores, respondendo, ainda, a <b>VENDEDORA</b>, pela evicção de direito.</p>
+    <p><b>16.2.</b> O <b>COMPRADOR</b>, na hipótese de haver se declarado “solteiro”, declara para todos os fins de direito e sob as penas da Lei, que não mantém ou constitui qualquer sociedade de fato qualificada ou classificada como “união estável” ou qualquer estado equivalente à sociedade conjugal e suas decorrências.</p>
+
+    <h3>17. DISPOSIÇÕES GERAIS</h3>
+    <p><b>17.1.</b> A <b>VENDEDORA</b> poderá, a qualquer tempo, ceder e transferir à terceiros o crédito decorrente deste contrato, representado pelas parcelas vincendas do preço, independentemente de qualquer anuência, interferência ou participação do <b>COMPRADOR</b>. Eventual cessão de seu crédito não exonerará a <b>VENDEDORA</b> de suas obrigações e responsabilidades como incorporadora do empreendimento.</p>
+    <p><b>17.2.</b> A tolerância por qualquer dos contratantes, quanto a alguma demora, atraso ou omissão da outra parte no cumprimento das obrigações ajustadas neste instrumento ou a não aplicação, na ocasião oportuna, das cominações aqui constantes, não acarretará o cancelamento das penalidades, nem dos poderes ora conferidos, podendo ser aplicadas aquelas e exercidos estes, a qualquer tempo, caso permaneçam as causas.</p>
+    <p><b>17.3.</b> O <b>COMPRADOR</b> autoriza a <b>VENDEDORA</b> a organizar, às suas exclusivas expensas, um "stand" de vendas durante a construção e manter no local, durante e após construído o <%=simulation.results.unit.enterprise.name%>, corretores, bem como uma unidade autônoma-apartamento em exposição, tudo a título gratuito.</p>
+    <p><b>17.4.</b> A<b>VENDEDORA</b>temodireitode:</p>
+    <ol type="a">
+        <li>Manter placas de venda na frente do <%=simulation.results.unit.enterprise.name%>, após a instalação do condomínio de utilização, bem como autorizar a permanência de corretores de plantão, até a venda da última unidade autônoma do edifício;</li>
+        <li>Permanentemente, manter placa ou outro sinal indicativo de seu nome e atividade empresarial, nas dependências internas ou áreas externas do edifício, correndo por sua conta as despesas com sua instalação;</li>
+        <li>Fixar placa de bronze ou similar, com sua logomarca, junto à entrada social do <%=simulation.results.unit.enterprise.name%>, sendo que os condôminos não a poderão retirar.</li>
+    </ol>
+
+    <p><b>17.5.</b> Os <b>COMPRADOR</b>ES, mútua e reciprocamente, se constituem procuradores um do outro, para fins de receber citações intimações e interpelações de qualquer procedimento, judicial ou extrajudicial, decorrente do presente contrato, de modo que, realizada a citação ou intimação, na pessoa de qualquer um deles, estará completo o quadro citatório. Na hipótese de ser apenas um adquirente, ficará sem efeito o item supra.</p>
+    <p><b>17.6.</b> Fica vedada aos <b>COMPRADOR</b>ES a constituição de quaisquer ônus sobre os direitos aquisitivos objeto deste contrato, além de fixar placas ou faixas na fachada do prédio, até 180 (cento e oitenta) dias após o habite-se.</p>
+    <p><b>17.7.</b> A <b>VENDEDORA</b> informa que a incorporação imobiliária do <%=simulation.results.unit.enterprise.name%> será submetida, ao regime do patrimônio de afetação, disciplinado pela Lei 10.931 de 02 de Agosto de 2004, com sua averbação na matrícula correspondente, com o que o <b>COMPRADOR</b> manifesta, neste ato, sua anuência.</p>
+    <p><b>17.8.</b> O<b>COMPRADOR</b>,nesteato,nomeiaeconstituia<b>VENDEDORA</b>comosuaprocuradora,em caráter irrevogável e irretratável, nos termos do artigo 684 e do parágrafo único do artigo 686, ambos do Código Civil Brasileiro vigente, podendo as mandatárias substabelecer, no todo ou em parte, com ou sem reservas de iguais poderes para:</p>
+
+    <ol type="a">
+        <li>Representá-loperanteoOficialdeRegistrodeImóveiscompetente,afimde,nostermos da Lei no 4.591/64, e legislação pertinente, efetivar, no momento próprio, os registros dos instrumentos de instituição, divisão, especificação e de convenção de condomínio do <%=simulation.results.unit.enterprise.name%>, assim como a averbação da construção do prédio, a re- ratificação do memorial de incorporação e da convenção de condomínio, com a finalidade de serem insertas as alterações que se fizerem necessárias, podendo a <b>VENDEDORA</b>, para tanto, assinar tais instrumentos, estabelecendo e aceitando cláusulas e condições, utilizando, no desempenho deste mandato, dos poderes da cláusula "extra", inclusive cumprindo eventuais exigências do referido Oficial de Registro de Imóveis;</li>
+        <li>Abrir, em qualquer agência bancária de sua livre escolha, em nome do <b>COMPRADOR</b>, conta corrente, para o fim de lá efetuar o depósito de qualquer quantia que a ele seja devida, em decorrência deste contrato. O mencionado depósito, uma vez efetivado, valerá para todos os efeitos, como quitação da entrega e pagamento da quantia depositada;</li>
+        <li>Perante agente financeiro, juntar documentos, prestar informações, assinar contratos, escrituras, instrumentos de aditamento ou re-ratificação, constituir hipotecas em qualquer grau sobre o imóvel, objeto deste contrato, podendo praticar todo e qualquer ato necessário para tanto;</li>
+        <li>Perante a Municipalidade de Belo Horizonte, efetuar a inscrição imobiliária da(s) unidade(s) autônoma(s) ora compromissada, em nome do <b>COMPRADOR</b>.</li>
+    </ol>
+
+    <h3>18. FORO</h3>
+    <p>Fica eleito o foro de Belo Horizonte, Minas Gerais, para a solução de questões decorrentes deste contrato.</p>
+
+
+    <!-- <p style="page-break-before: always;">&nbsp;</p> -->
+
+    <h3>19. CIÊNCIA PRÉVIA</h3>
+    <p>O <b>COMPRADOR</b> declara que teve prévia ciência de todas as disposições contidas neste contrato, que o leu atentamente antes de assiná-lo e que concorda com todos os seus termos e condições, tendo sido orientado pela <b>VENDEDORA</b> a buscar orientação jurídica independente para celebração do presente instrumento.</p>
+    <p>Assim ajustadas, assinam as partes o presente instrumento, em três vias, ante duas testemunhas.</p>
+
+    <p>Belo Horizonte, <b>data</b>.</p>
+
+    <p><small>PROMITENTE <b>VENDEDORA</b></small></p>
+    <p><b>RKM 03 EMPREENDIMENTOS IMOBILIÁRIOS LTDA</b></p>
+
+    <p><small>PROMITENTE(S) <b>COMPRADOR</b>(ES)</small></p>
+    <p>_____________________________________________________</p>
+
+    <p><b>Testemunhas</b></p>
+    <dl>
+        <li><b>Nome:</b> _________________________________________</li>
+        <li><b>RG:</b> _________________________________________</li>
+        <li><b>CP:</b> _________________________________________</li>
+    </dl>
+
+    <dl>
+        <li><b>Nome:</b> _________________________________________</li>
+        <li><b>RG:</b> _________________________________________</li>
+        <li><b>CP:</b> _________________________________________</li>
+    </dl>
+
+
+</body>
+
+
+</html>
