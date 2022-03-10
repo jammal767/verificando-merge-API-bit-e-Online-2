@@ -33,8 +33,8 @@ class Anticipate {
         let porcentagemDoDesconto = parseFloat(valorDoDesconto / valorParcela * 100).toFixed(2);
 
 
-        porcentagemDoDesconto = porcentagemDoDesconto.replace('.', ',');
-        valorDoDesconto = valorDoDesconto.replace('.', ',');
+        // porcentagemDoDesconto = porcentagemDoDesconto.replace('.', ',');
+        // valorDoDesconto = valorDoDesconto.replace('.', ',');
 
         const result = {
             descontos: {

@@ -689,6 +689,7 @@ class Simulation {
         if (mensal > this.valorTotalMensal) {
           this.mensalmaior(mensal, semestral, chaves, entrada);
         }
+        this.CalculoDescontoChave(chaves);
         if (chaves < this.valorChaves && semestral < this.valorTotalSemestral && entrada > this.valorEntrada) {
           this.CalculoDescontoChave(chaves);
         } 
@@ -813,7 +814,7 @@ class Simulation {
           mensalidades: this.valorsemestralteste,
         },
         chaves: {
-          data: this.Meses[this.numTotalMeses - 1].valorChaves,
+          data: this.Meses[this.numTotalMeses - 1].valorMensal,
           valor: this.chavedescontoteste,
         },
       },
@@ -824,7 +825,8 @@ class Simulation {
         mensal: this.valorTotalMensal,
         semestral: this.valorTotalSemestral,
         totalDesconto: this.valordescontoteste ,
-        porcentagemDesconto: `${this.descontoteste}%`,
+        // porcentagemDesconto: `${this.descontoteste}%`,
+        porcentagemDesconto: `${porcentagemDesconto}%`,
       },
 
       // Parte Original -----------------
@@ -885,7 +887,6 @@ class Simulation {
       if (this.inputTotalSemestral === 0) {
         const totalad = this.inputTotalSemestral;
         let semestral = this.valorTotalSemestral - totalad;
-        console.log('semestral ===>', semestral);
         const Semestral = this.Mesesteste.filter((f) => f.titulo === "Semestral");
         let totalparc = Semestral.length - 1;
         const valorsemestral = parseFloat((this.valorTotalSemestral / totalparc).toFixed(2));
@@ -924,7 +925,6 @@ class Simulation {
       if (this.inputTotalSemestral < this.valorTotalSemestral && this.inputTotalSemestral !== 0) {
         const totalad = this.inputTotalSemestral;
         let semestral = this.valorTotalSemestral - totalad;
-        console.log('semestral ===>', semestral);
         const Semestral = this.Mesesteste.filter((f) => f.titulo === "Semestral");
         let totalparc = Semestral.length - 1;
         const valorsemestral = parseFloat((this.valorTotalSemestral / totalparc).toFixed(2));
@@ -1030,7 +1030,7 @@ class Simulation {
     const datainicial = moment().tz("America/Sao_Paulo").startOf("day");
     const datainicialteste = new Date(datainicial);
     let auxiliar = Math.floor((this.dataFinal.diff(datainicial, "days") / 365) * 12);
-    let numSemestrest = Math.ceil((auxiliar) / 6);
+    let numSemestrest = Math.ceil((auxiliar -1) / 6);
     let totalmeses = auxiliar;
     this.totalmeses = auxiliar - 1;
     this.numMeses = auxiliar - 1;
@@ -1039,7 +1039,7 @@ class Simulation {
     let mesinic = moment(datainicialteste, "DD/MM/YYYY");
     let mesinicd = moment(datainicialteste, "DD/MM/YYYY");
     this.Mesesteste = [];
-    let semestre = 5;
+    let semestre = 6;
     let totalmes = 0;
     for (let a = 0; a <= totalmeses; a++) {
       mesinicd = moment(datainicialteste, "DD/MM/YYYY");
@@ -1414,7 +1414,7 @@ class Simulation {
       this.valorsemestralteste[b].valor = parseFloat(this.valorsemestral.toFixed(2));
     }
     const valorparcela = parseFloat((valorsemestralb - somadescontos).toFixed(2));
-    this.valorsemestralteste[totalparc].valor = valorparcela;
+    this.valorsemestralteste[totalparc - 1].valor = valorparcela;
     this.valorTotalSemestral = totaladiant
     this.valordescontoteste = parseFloat((this.valordescontoteste + somadescontos).toFixed(2));
   }
